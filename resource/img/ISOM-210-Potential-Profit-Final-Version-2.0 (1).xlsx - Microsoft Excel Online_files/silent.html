@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- saved from url=(0312)https://a.lw.skype.com/Login/silent/MsaCallback?site_name=lw.skype.com&response_type=postmessage&client_id=580081&redirect_uri=https%3a%2f%2fexcel.officeapps.live.com%2fx%2f_layouts%2fxlviewerinternal.aspx&state=silentloginsdk_1507076730926&partner=999&session_id=AAAAAAAAAAAAAAAAAAAA&f=255&MSPPError=-2147208139 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+
+    <title>Skype</title>
+
+    <script src="./HashFragment.js"></script>
+
+    <script type="text/javascript">
+        var message = "";
+        (function () {
+            var target = "https://excel.officeapps.live.com/x/_layouts/xlviewerinternal.aspx",
+                messageObject = {"error":"invalid_grant","error_description":"User is not authenticated at MSA","state":"silentloginsdk_1507076730926"};
+
+            window.hashFragment.parseHashParams();
+            var error = window.hashFragment.getHashParam("error");
+            var errorDescription = window.hashFragment.getHashParam("error_description");
+
+            if (!!error && error.length) {
+                messageObject.error = error;
+                messageObject.error_description = errorDescription;
+            }
+            
+            var message = JSON.stringify(messageObject);
+
+            if (!!window.opener) {                              // Send postMessage from a Popup and close window
+                window.opener.postMessage(message, target);
+                window.close();
+            } else if (!!window.parent) {                       // Send postMessage from an Iframe
+                window.parent.postMessage(message, target);
+            }
+        }());
+    </script>
+</head>
+<body>
+
+</body></html>
